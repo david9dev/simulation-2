@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import House from './House/House'
 import {connect} from 'react-redux';
 import {setHouses, deleteHouse} from './../../../ducks/reducer';
@@ -15,7 +16,6 @@ class Dashboard extends Component
 
         axios.get('/api/houses').then((response) =>
             {
-            console.log(response.data);
             obj.payload = response.data;
             this.props.setHouses(obj);
             })
@@ -25,7 +25,6 @@ class Dashboard extends Component
     {
         axios.delete(`/api/houses/${id}`).then((response) =>
         {
-            console.log(response.data);
         })
         this.props.deleteHouse(id);
     }
@@ -40,6 +39,7 @@ class Dashboard extends Component
         });
         return(
             <div>
+                <Link to='/wizard/part1'><button>Add property</button></Link>
                 {houses}
             </div>
         );

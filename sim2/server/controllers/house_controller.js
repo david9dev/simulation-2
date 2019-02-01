@@ -17,7 +17,7 @@ module.exports = {
         {
             house.push(request.body[key]);
         }
-        console.log(house);
+        console.log(request.body);
         request.app.get('db').create_house(house).then(() =>
         {
             response.status(200).json('you created a house');

@@ -2,7 +2,6 @@ import React from 'react';
 
 function House(props)
 {
-    console.log('house', props.info);
     let content = [];
     for(let key in props.info)
     {
