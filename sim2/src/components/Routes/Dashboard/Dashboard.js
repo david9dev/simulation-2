@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import House from './House/House'
 import {connect} from 'react-redux';
-import {setHouses, deleteHouse} from './../../../ducks/reducer';
+import {deleteHouse, setHouses} from './../../../ducks/reducer';
 import axios from 'axios';
 
 class Dashboard extends Component
 {
     componentDidMount()
     {
+        if(this.props.houses[0] === 'hasnt mounted yet')
+        {
         let obj = {
             type: 'GET',
             payload: []
@@ -19,6 +21,7 @@ class Dashboard extends Component
             obj.payload = response.data;
             this.props.setHouses(obj);
             })
+        }
     }
 
     handleDelete(id)
@@ -56,8 +59,7 @@ function mapStateToProps(duxState)
 }
 
 const mapDispatchToProps = {
-    setHouses,
-    deleteHouse
+    deleteHouse, setHouses
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

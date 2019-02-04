@@ -1,6 +1,6 @@
 
 const initState = {
-    houses: ['1','2','3'],
+    houses: ['hasnt mounted yet'],
     name: "",
     address: "",
     city: "",
@@ -47,6 +47,8 @@ function reducer(state = initState, action)
 
 export function setHouses(obj)
 {
+    // console.log(obj);
+    // initState.houses = obj.payload;
     obj.type = GET;
     return obj;
 }
